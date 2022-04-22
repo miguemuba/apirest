@@ -1,0 +1,9 @@
+FROM ubuntu:20.04
+WORKDIR "/app"
+RUN apt update
+RUN apt install -y pip jq wget
+RUN pip install jq yq xq
+RUN wget https://fastdl.mongodb.org/tools/db/mongodb-database-tools-ubuntu2004-x86_64-100.5.2.deb | apt install
+COPY ./import-data.sh ./
+RUN chmod +x ./import-data.sh
+CMD ["sh", "import-data.sh"]

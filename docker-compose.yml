@@ -1,0 +1,25 @@
+version: "3"
+services:
+  app:
+    container_name: api-rest
+    restart: always
+    build:
+      context: ./app
+      dockerfile: Dockerfile
+    ports:
+      - "3001:3001"
+    depends_on:
+      - "mongo"
+    links:
+      - mongo
+  mongo:
+    container_name: mongodb
+    image: mongo:latest
+  # import_data:
+  #   container_name: import_data
+  #   image: ubuntu:20.04
+  #   build:
+  #     context: ./app
+  #     dockerfile: Dockerfile.mongo
+  #   depends_on:
+  #     - "mongo"
