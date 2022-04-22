@@ -15,11 +15,3 @@ services:
   mongo:
     container_name: mongodb
     image: mongo:latest
-  # import_data:
-  #   container_name: import_data
-  #   image: ubuntu:20.04
-  #   build:
-  #     context: ./app
-  #     dockerfile: Dockerfile.mongo
-  #   depends_on:
-  #     - "mongo"
