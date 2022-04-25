@@ -1,4 +1,4 @@
-name: Pipeline API REST
+name: Pipeline
 on:
   push:
     branches:
@@ -7,7 +7,7 @@ on:
 jobs:
   build:
     name: Build
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
       - uses: actions/checkout@v2
         with:
