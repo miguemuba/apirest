@@ -1,6 +1,6 @@
 #!/bin/bash
 
-export DB_URI="172.24.0.2"
+export DB_URI="172.25.0.2"
 export DB_PORT="27017"
 export DB_NAME="deportes"
 export data_uri="https://fx-nunchee-assets.s3.amazonaws.com/data/sports.xml"
@@ -38,15 +38,15 @@ fi
 # mongo_check
 # sleep 5
 # echo mongo check SUCCESS
-wget $data_uri
+if [ ! -f "sports.xml" ]; then
+    wget $data_uri
+fi
 sleep 5
-# echo get data from uri SUCCESS
-# install_dependencies
-sleep 5
+
 # echo install dependencies SUCCESS
-xml_to_json
+if [ ! -f "equipos.json" -a -f "jugadores.json"]; then
+    xml_to_json
+fi
 sleep 5
-# echo processing data SUCCESS
 import_data
 sleep 5
-# echo import data SUCCESS
