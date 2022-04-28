@@ -6,9 +6,9 @@ const playersRoutes = express.Router();
 
 // This will help connect to the database
 const dbo = require('../db/conn');
-
+const verify = require('../jwt/verifyToken.js')
 // This section will help get a list of all the team's (:id) players
-playersRoutes.route('/api/teams/:id/players').get(async function (req, res) {
+playersRoutes.route('/api/teams/:id/players').get( verify, async function (req, res) {
   const dbConnect = dbo.getDb();
   
   dbConnect

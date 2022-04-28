@@ -5,7 +5,6 @@ const express = require('express');
 const cors = require('cors');
 // get MongoDB driver connection
 const dbo = require('./db/conn');
-
 const PORT = process.env.PORT || 5000;
 const app = express();
 
@@ -14,6 +13,7 @@ app.use(express.json());
 app.use(require('./routes/players'));
 app.use(require('./routes/teams'));
 app.use(require('./routes/positions'));
+app.use(require('./routes/jwt'));
 
 // Global error handling
 app.use(function (err, _req, res) {
@@ -27,7 +27,7 @@ dbo.connectToServer(function (err) {
     console.error(err);
     process.exit();
   }
-
+  
   // start the Express server
   app.listen(PORT, () => {
     console.log(`Server is running on port: ${PORT}`);
