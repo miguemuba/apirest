@@ -8,7 +8,7 @@ const teamsRoutes = express.Router();
 const dbo = require('../db/conn');
 let page = 0;
 let limit = 0;
-// This section will help you get a list of all the teams.
+// This section will help you get a list of all the teams with optional limit and page in request.
 teamsRoutes.route('/api/team').get(async function (req, res) {
   const dbConnect = dbo.getDb();
   if (!req.query.page || !req.query.limit) {
