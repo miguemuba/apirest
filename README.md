@@ -11,7 +11,7 @@ Run services:
 - Mongo Databse
 - API Rest server
 ```bash
-docker/compose up
+docker-compose up
 ```
 
 ## Loading data ...
